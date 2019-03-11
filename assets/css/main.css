@@ -1,0 +1,81 @@
+body {
+  background-image: url('../img/bg.jpg');
+}
+
+@font-face {
+  font-family: ruthen;
+  src: url('../fonts/Ruthen.ttf');
+}
+
+@font-face {
+  font-family: HoustanderDemo;
+  src: url('../fonts/HoustanderDemo.ttf');
+}
+
+.main-header {
+  height: 8em;
+}
+
+.main-content {
+  background-image: linear-gradient(#00cc00, #003300);
+  /* height: 15em; */
+}
+
+.header-title {
+  color:#ffff99;
+  font-family: HoustanderDemo;
+  font-size:120px;
+  text-align:right;
+  position:absolute;
+  right:0px;
+}
+
+.header-img {
+  width:30%;
+  position:absolute;
+  left:0px;
+  top:0px
+}
+
+@media only screen and (max-width: 300px) {
+  .header-title {
+    color:#ffff99;
+    font-family: HoustanderDemo;
+    font-size:40px;
+    text-align:center;
+    right:10%;
+    left:10%;
+    z-index:999;
+  }
+
+
+}
+
+@media only screen and (max-width: 600px) {
+  .header-title {
+    color:#ffff99;
+    font-family: HoustanderDemo;
+    font-size:80px;
+    text-align:center;
+    right:10%;
+    left:10%;
+    z-index:999;
+  }
+
+  .header-img {
+    width:50%;
+    position:absolute;
+    left:25%;
+    right: 25%;
+    z-index:998;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .header-img {
+    width:50%;
+    position:absolute;
+    left:25%;
+    right: 25%;
+  }
+}

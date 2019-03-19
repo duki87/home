@@ -91,8 +91,8 @@
     <div id="brands" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Управљање</h6>
-        <a class="collapse-item" href="login.html">Додај произвођача</a>
-        <a class="collapse-item" href="register.html">Прегледај све</a>
+        <a class="collapse-item" href="add-brand.php">Додај произвођача</a>
+        <a class="collapse-item" href="brands.php">Прегледај све</a>
       </div>
     </div>
   </li>

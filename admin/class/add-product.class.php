@@ -29,7 +29,7 @@
     }
 
     public function add_product() {
-      $query = "INSERT INTO products
+      $query = "INSERT INTO product
       (name, brand, category, price, volume, units, pack, image, stock, description, date_added)
       VALUES (:name, :brand, :category, :price, :volume, :units, :pack, :image, :stock, :description, :date_added)";
       $statement = $this->connect->prepare($query);

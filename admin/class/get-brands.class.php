@@ -112,7 +112,7 @@
     public function search($keywords) {
       //return json_encode('aasdasd');
       $resultArr = array();
-      $query = "SELECT name FROM brand WHERE name LIKE ?";
+      $query = "SELECT * FROM brand WHERE name LIKE ?";
       $params = array();
       $params[] = "%$keywords%";
       $statement = $this->connect->prepare($query);

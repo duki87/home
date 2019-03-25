@@ -82,7 +82,7 @@ if(isset($_GET['records_per_page'])) {
                 </div>
               </div>
             </form>
-            <table id="myTable" class="table table-striped mt-2">
+            <table id="brandTable" class="table table-striped mt-2">
              <tr class="header">
                <th style="width:20%;">Назив</th>
                <th style="width:10%;">Опис</th>
@@ -93,14 +93,17 @@ if(isset($_GET['records_per_page'])) {
              <tr>
                <td><?php echo $brand['name'];?></td>
                <td><?php echo $brand['description'];?></td>
-               <td><?php echo $brand['logo'];?></td>
-               <td><?php echo $brand['status'];?></td>
+               <td><img src="<?php echo 'img/brand_logos/' . $brand['logo'];?>" alt="" style="width:100px"></td>
+               <td>
+                 <button class="btn <?=$brand['status']==1?'btn-success':'btn-warning';?>" type="button" name="changeStatus"><?=$brand['status']==1?'Активан':'Неактиван';?></button>
+                 <button class="btn btn-danger mt-1 " type="button" name="removeBrand">Обриши брeнд</button>
+               </td>
              </tr>
             <?php } ?>
             </table>
           </div>
           <div class="card-footer text-muted">
-            <nav aria-label="Page navigation example">
+            <nav aria-label="Page navigation example" id="pagination_area">
               <ul class="pagination justify-content-center">
                 <?=$pagination;?>
               </ul>
@@ -143,10 +146,27 @@ if(isset($_GET['records_per_page'])) {
         cache: false,
         processData: false,
         success: function(data) {
+          let thead = '<tr class="header">'+
+                         '<th style="width:20%;">Назив</th>'+
+                         '<th style="width:10%;">Опис</th>'+
+                         '<th style="width:10%;">Лого</th>'+
+                         '<th style="width:10%;">Статус</th>'+
+                       '</tr>';
+          var tbody = '';
           var results = JSON.parse(data);
+          console.log(JSON.parse(data));
           for(let result of results) {
-            console.log(result.name);
+            tbody += '<tr>';
+            tbody += '<td>'+result.name+'</td>';
+            tbody += '<td>'+result.description+'</td>';
+            tbody += '<td><img src="img/brand_logos/'+result.logo+'" alt="" style="width:100px"></td>';
+            tbody += '<td>'+result.status+'</td>';
+            tbody += '</tr>';
           }
+          $('#brandTable').html('');
+          $('#pagination_area').html('');
+          $('#brandTable').append(tbody);
+
         }
       });
       //console.log(event.target.value);

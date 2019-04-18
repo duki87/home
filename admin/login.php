@@ -5,7 +5,7 @@
   if(isset($_POST['email']) && isset($_POST['password'])) {
     $remember = $_POST['remember_me'];
     $login = new Login();
-    if($login->login($_POST['email'], $_POST['password'], $_POST['remember_me']) == 'LOGGED_IN') {
+    if($login->login($_POST['email'], $_POST['password']) == 'LOGGED_IN') {
       if($remember) {
         setcookie('admin_remember_drvo', $_SESSION['admin']['admin_id'], time() + (86400 * 30), '/home/admin/', 'localhost');
         //setcookie('admin_settings_drvo', $_SESSION['admin']['admin_id'], time() + (86400 * 30), '/home/admin/', 'localhost');

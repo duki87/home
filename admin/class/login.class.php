@@ -58,7 +58,8 @@
     }
 
     public function logout() {
-
+      unset($_SESSION['admin']['admin_id']);
+      unset($_SESSION['admin']['admin_name']);
     }
 
     function __destruct() {

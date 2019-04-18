@@ -45,8 +45,24 @@
       }
     }
 
+    public function get_admin($id) {
+      $admin_array = array();
+      $query = "SELECT * FROM admins WHERE id = ?";
+      $statement = $this->connect->prepare($query);
+      $statement->execute([$id]);
+      $result = $statement->fetch();
+      $admin_array['admin_id'] = $result['id'];
+      $admin_array['admin_name'] = $result['name'];
+      $_SESSION['admin'] = $admin_array;
+      return $admin_array;
+    }
+
+    public function logout() {
+
+    }
+
     function __destruct() {
-      echo 'LOGIN_FINISH';
+      echo 'FINISH';
     }
   }
 ?>

@@ -1,8 +1,6 @@
 <?php
+  include('parts/session.php');
   include('parts/head.php');
-  if(!isset($_SESSION['admin']['admin_id'])) {
-    header('Location: login.php');
-  }
 ?>
 <div id="wrapper">
   <?php include('parts/sidebar.php');?>
@@ -14,6 +12,7 @@
 
       <?php include('parts/topbar.php');?>
       <?php include('parts/dashboard.php');?>
+
 
     </div>
     <!-- End of Main Content -->

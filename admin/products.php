@@ -1,7 +1,8 @@
 <?php
-  include('parts/head.php');
+  include('parts/session.php');
   include('class/db.class.php');
   include('class/get-products.class.php');
+  include('parts/head.php');
 
   $pagination = '';
   $products = array();

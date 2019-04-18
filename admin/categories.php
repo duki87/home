@@ -1,12 +1,11 @@
 <?php
 include('parts/session.php');
 include('class/db.class.php');
-include('class/get-brands.class.php');
+include('class/get-categories.class.php');
 if(!isset($_SESSION['admin']['admin_id'])) {
   header('Location: login.php');
 }
 include('parts/head.php');
-
 $pagination = '';
 $brands = array();
 
@@ -19,14 +18,25 @@ if(isset($_GET['records_per_page'])) {
   $_SESSION['admin']['column'] = $column;
   $_SESSION['admin']['records_per_page'] = $records_per_page;
   $_SESSION['admin']['page_no'] = $page_no;
-  $get_brands = new GetBrands($records_per_page, $page_no, $sorting, $column);
-  $brands = $get_brands->get_brands();
-  $pagination = $get_brands->pagination();
+  $get_categories = new GetCategories($records_per_page, $page_no, $sorting, $column);
+  $categories = $get_categories->get_categories();
+  $pagination = $get_categories->pagination();
 } else {
-  $get_brands = new GetBrands();
-  $brands = $get_brands->on_load();
-  $pagination = $get_brands->pagination();
+  $get_categories = new GetCategories();
+  $categories = $get_categories->on_load();
+  $pagination = $get_categories->pagination();
 }
+?>
+<?php if(isset($_SESSION['admin']['category_message'])) { ?>
+  <div class="alert alert-warning alert-dismissible" role="alert">
+    <strong>Oбавештење</strong> <?=$_SESSION['admin']['category_message'];?>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<?php
+  unset($_SESSION['admin']['category_message']);
+  }
 ?>
 <div id="wrapper">
   <?php include('parts/sidebar.php');?>
@@ -87,17 +97,17 @@ if(isset($_GET['records_per_page'])) {
              <tr class="header">
                <th style="width:10%; text-align:left">Назив</th>
                <th style="width:10%;">Опис</th>
-               <th style="width:10%;">Лого</th>
+               <th style="width:10%;">Главна категорија</th>
                <th style="width:10%;">Статус</th>
              </tr>
-             <?php foreach($brands as $brand) { ?>
+             <?php foreach($categories as $category) { ?>
              <tr>
-               <td style="text-align:left"><?php echo $brand['name'];?></td>
-               <td style="text-align:left"><?php echo $brand['description'];?></td>
-               <td><img src="<?php echo 'img/brand_logos/' . $brand['logo'];?>" alt="" style="width:100px"></td>
+               <td style="text-align:left"><?php echo $category['name'];?></td>
+               <td style="text-align:left"><?php echo $category['description'];?></td>
+               <td style="text-align:center"><?=$category['parent_id']==0?'Главна категорија':$get_categories->parent_name($category['parent_id']);?></td>
                <td>
-                 <button class="btn <?=$brand['status']==1?'btn-success':'btn-warning';?> d-inline" type="button" name="changeStatus"><?=$brand['status']==1?'Активан':'Неактиван';?></button>
-                 <button class="btn btn-danger mt-1 d-inline" onclick="return confirm('Да ли сте сигурни да желите да означите овог произвођача као неактивног (више се неће појављивати на сајту за посетиоце, као ни његови производи)?')" type="button" name="removeBrand">x</button>
+                 <button class="btn <?=$category['status']==1?'btn-success':'btn-warning';?> d-inline" type="button" name="changeStatus"><?=$category['status']==1?'Активан':'Неактиван';?></button>
+                 <button class="btn btn-danger mt-1 d-inline" onclick="return confirm('Да ли сте сигурни да желите да означите ову категорију као неактивну (више се неће појављивати на сајту за посетиоце, као ни производи из ове категорије)?')" type="button" name="removeCategory">x</button>
                </td>
              </tr>
             <?php } ?>

@@ -16,6 +16,7 @@
         $this->connect = new PDO("mysql:host=$this->hostname; dbname=$this->database", "$this->username", "$this->password", $this->options);
         //echo 'Povezano!';
         if($this->connect) {
+          //$this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
           return $this->connect;
         }
       }

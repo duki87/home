@@ -171,7 +171,7 @@
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
           <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-          Logout
+          Одјави се
         </a>
       </div>
     </li>
@@ -193,12 +193,13 @@
       <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
       <div class="modal-footer">
         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-        <button class="btn btn-primary" onclick="return document.getElementById('logoutForm').submit()">Logout</button>
+        <button class="btn btn-primary" onclick="return document.getElementById('logoutForm').submit()">Одјави се</button>
       </div>
     </div>
   </div>
 </div>
-<form class="d-none" method="get" action="logout.php" id="logoutForm">
+<form class="d-none" method="get" action="process/logout.process.php" id="logoutForm">
+  <input type="hidden" name="logout" value="1">
   <input type="submit" name="submit-btn" value="">
 </form>
 <!-- End of Topbar -->

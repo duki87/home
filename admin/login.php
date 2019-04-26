@@ -3,6 +3,7 @@
   include('class/db.class.php');
   include('class/login.class.php');
   include('parts/head.php');
+  include('includes/url.php');
 ?>
 
 <div class="container">

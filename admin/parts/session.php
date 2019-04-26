@@ -3,6 +3,7 @@
   // output: /myproject/index.php
   $currentPath = $_SERVER['PHP_SELF'];
   include('class/login.class.php');
+  include('includes/url.php');
 
   // output: Array ( [dirname] => /myproject [basename] => index.php [extension] => php [filename] => index )
   $pathInfo = pathinfo($currentPath);
@@ -15,7 +16,7 @@
       $login = new Login();
       $admin = $login->get_admin($_COOKIE['admin_remember_drvo']);
     } else {
-      header('Location: login.php');
+      header('Location: '.SITE_URL.'login.php');
     }
   }
 

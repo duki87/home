@@ -6,8 +6,8 @@
     private $connect;
 
     function __construct() {
-      $db = new Database();
-      $this->connect = $db->connect();
+      //$db = new Database();
+      $this->connect = $this->connect();
     }
 
     public function login($email, $password) {

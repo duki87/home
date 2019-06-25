@@ -11,8 +11,8 @@
     private $result;
 
     function __construct($records_per_page = 5, $page_no = 1, $sorting_order = "DESC", $sorting_column = 'name') {
-      $db = new Database();
-      $this->connect = $db->connect();
+      //$db = new Database();
+      $this->connect = $this->connect();
       //prepare variables
       $this->per_page = $records_per_page;
       $this->page = $page_no;

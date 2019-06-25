@@ -9,8 +9,8 @@
     private $parent_id;
 
     function __construct($category_name, $category_description, $category_parent) {
-      $db = new Database();
-      $this->connect = $db->connect();
+      //$db = new Database();
+      $this->connect = $this->connect();
       //prepare variables
       $this->name = $category_name;
       $this->description = $category_description;

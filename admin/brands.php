@@ -1,6 +1,5 @@
 <?php
 include('parts/session.php');
-include('class/db.class.php');
 include('class/get-brands.class.php');
 if(!isset($_SESSION['admin']['admin_id'])) {
   header('Location: login.php');

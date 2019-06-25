@@ -21,4 +21,8 @@
       $result = $statement->fetchAll();
     }
 
+    function __destruct() {
+
+    }
+
   }

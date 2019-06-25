@@ -1,6 +1,5 @@
 <?php
 include('parts/session.php');
-include('class/db.class.php');
 include('class/get-categories.class.php');
 if(!isset($_SESSION['admin']['admin_id'])) {
   header('Location: login.php');
@@ -60,7 +59,7 @@ if(isset($_GET['records_per_page'])) {
         ?>
         <div class="card text-center mt-2">
           <div class="card-header bg-primary" style="color:white">
-            <h2>Сви произвођачи</h2>
+            <h2>Све категорије</h2>
           </div>
           <div class="card-body">
             <form class="" action="<?=$_SERVER["PHP_SELF"];?>" method="get">
@@ -142,7 +141,7 @@ if(isset($_GET['records_per_page'])) {
       if(page == undefined) {
         return false;
       }
-      window.location.replace("http://localhost/home/admin/brands.php?page_no="+page+"&column="+column+"&records_per_page="+records_per_page+"&sort="+sort+"");
+      window.location.replace("http://localhost/home/admin/categories.php?page_no="+page+"&column="+column+"&records_per_page="+records_per_page+"&sort="+sort+"");
     });
 
     $('#search').keyup(function(event) {

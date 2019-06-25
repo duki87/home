@@ -1,10 +1,12 @@
 <?php
-include('parts/head.php');
-include('class/db.class.php');
+include('parts/session.php');
 include('class/add-brand.class.php');
+//include('class/db.class.php');
+
 if(!isset($_SESSION['admin']['admin_id'])) {
   header('Location: login.php');
 }
+include('parts/head.php');
 
 if(isset($_POST['name'])) {
   $add_brand = new AddBrand($_POST['name'], $_POST['description'], $_FILES['logo']);

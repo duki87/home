@@ -9,8 +9,8 @@
     private $logo;
 
     function __construct($brand_name, $brand_description, $brand_logo) {
-      $db = new Database();
-      $this->connect = $db->connect();
+      //$db = new Database();
+      $this->connect = $this->connect();
       //prepare variables
       $this->name = $brand_name;
       $this->description = $brand_description;

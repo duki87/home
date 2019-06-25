@@ -1,10 +1,10 @@
   <?php
-  include('parts/head.php');
-  include('class/db.class.php');
+  include('parts/session.php');
   include('class/add-product.class.php');
   if(!isset($_SESSION['admin']['admin_id'])) {
     header('Location: login.php');
   }
+  include('parts/head.php');
 
   if(isset($_POST['name'])) {
     $add_product = new AddProduct($_POST['name'], $_POST['brand'], $_POST['category'], $_POST['price'], $_POST['volume'], $_POST['units'], $_POST['pack'], $_FILES['image'], $_POST['stock'], $_POST['description']);
